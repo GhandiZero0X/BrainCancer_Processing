@@ -1,34 +1,26 @@
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
-# Membaca dataset setelah penanganan missing value dan outlier
-file_path = 'TCGA_GBM_LGG_Mutations_cleaned_MissingValue_Outlier.csv'
-data_cleaned = pd.read_csv(file_path)
+file_path = 'TCGA_InfoWithGrade_MissingValue_Outlier.csv'
+data_normalisasi = pd.read_csv(file_path)
 
-# Pisahkan kolom numerik dan non-numerik
-data_numerik = data_cleaned.select_dtypes(include=['float64', 'int64'])  # Pilih kolom numerik
-data_non_numerik = data_cleaned.select_dtypes(exclude=['float64', 'int64'])  # Pilih kolom non-numerik
+# pilih kolom yang numerik
+data_numerik = data_normalisasi.select_dtypes(include=['float64', 'int64']).columns
 
-# Tampilkan nama kolom numerik dan non-numerik
+# kolom numerik
 print("\nNama Kolom Numerik:")
-print(data_numerik.columns.tolist())
+print(data_numerik.tolist())
 
-print("\nNama Kolom Non-Numerik:")
-print(data_non_numerik.columns.tolist())
+# Min Max scalling
+scaler = MinMaxScaler()
+data_normalisasi[data_numerik] = scaler.fit_transform(data_normalisasi[data_numerik])
 
-# a. Min-Max Scaling
-min_max_scaler = MinMaxScaler()
-data_min_max = data_numerik.copy()
-data_min_max.iloc[:, :] = min_max_scaler.fit_transform(data_numerik)  # Normalisasi hanya kolom numerik
+# menampilakn data setelah normalisasi
+print(data_normalisasi.head())
+print("info data setelah normalisasi", data_normalisasi.info())
+# cek distribusi data setelah normalisasi
+for c in list(data_normalisasi):
+    print(f"\nValue counts pada kolom '{c}':\n", data_normalisasi[c].value_counts())
 
-# Gabungkan kembali data non-numerik dan numerik yang telah dinormalisasi
-data_min_max_combined = pd.concat([data_non_numerik, data_min_max], axis=1)
+data_normalisasi.to_csv('TCGA_InfoWithGrade_Normalisasi.csv', index=False)
 
-# Tampilkan hasil normalisasi
-print("\nHasil Min-Max Scaling:")
-print(data_min_max_combined.head())
-
-# Simpan hasil normalisasi ke file CSV
-output_file_path = 'TCGA_GBM_LGG_Mutations_Min_Max_Normalized.csv'
-data_min_max_combined.to_csv(output_file_path, index=False)
-print(f"\nDataset yang telah dinormalisasi disimpan ke: {output_file_path}")
