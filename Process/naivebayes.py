@@ -120,7 +120,7 @@ plt.show()
 # manual_prediction = gaussian.predict(manual_input)
 
 # # Condition for the prediction result, where 0 = LGG and 1 = GBM
-# if manual_prediction == 0:
+# if manual_prediction == 0.0:
 #     manual_prediction = "LGG"
 # else:
 #     manual_prediction = "GBM"

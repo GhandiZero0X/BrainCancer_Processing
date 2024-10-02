@@ -123,7 +123,7 @@ plt.show()
 # # Predict using the trained model
 # manual_prediction = clf.predict(manual_input)[0]
 
-# if manual_prediction == 0:
+# if manual_prediction == 0.0:
 #     manual_prediction = "LGG"
 # else:
 #     manual_prediction = "GBM"
