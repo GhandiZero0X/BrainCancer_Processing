@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Klinik - Clinic Website Template</title>
+    <title>Grading Glioma BrainCancer</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{ url_for('static', filename='img/logo.png') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,10 +27,10 @@
     <link href="{{ url_for('static', filename='lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -43,19 +44,19 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <img src="img/logo.png" alt="Klinik Logo" class="img-fluid logo-small">
+        <a href="{{ url_for('index') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Klinik Logo" class="img-fluid logo-small">
         </a>               
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="index.html" class="nav-item nav-link">About</a>
-                <a href="index.html" class="nav-item nav-link">Genes</a>
+                <a href="{{ url_for('index') }}" class="nav-item nav-link active">Home</a>
+                <a href="{{ url_for('index') }}" class="nav-item nav-link">About</a>
+                <a href="{{ url_for('index') }}" class="nav-item nav-link">Genes</a>
             </div>
-            <a href="contact.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">DIAGNOSA</a>
+            <a href="{{ url_for('form_diagnosa') }}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">DIAGNOSA</a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -64,16 +65,9 @@
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <h1 class="display-3 text-white mb-3 animated slideInDown">Hasil Diagnosa</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb text-uppercase mb-0">
-                    <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="contact.html">Hasil Diagnosa</a></li>
-                </ol>
-            </nav>
         </div>
     </div>
     <!-- Page Header End -->
-
 
     <!-- Contact Start -->
     <div class="container-xxl py-5">
@@ -86,37 +80,36 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h4>Informasi Pengguna</h4>
-                                <p><strong>Gender:</strong> [gender]</p>
-                                <p><strong>Age:</strong> [age]</p>
-                                <p><strong>Race:</strong> [race]</p>
+                                <p><strong>Gender:</strong> {{ data['Gender']}}</p>
+                                <p><strong>Age:</strong> {{ data['Age']}}</p>
+                                <p><strong>Race:</strong> {{ data['Race']}}</p>
                             </div>
                             <div class="col-md-6">
                                 <h4>Kondisi Gen</h4>
                                 <div class="row">
-                                    <!-- Kolom pertama dari dua kolom -->
                                     <div class="col-md-6">
-                                        <p><strong>IDH1:</strong> [hasil_IDH1]</p>
-                                        <p><strong>TP53:</strong> [hasil_TP53]</p>
-                                        <p><strong>ATRX:</strong> [hasil_ATRX]</p>
-                                        <p><strong>PTEN:</strong> [hasil_PTEN]</p>
-                                        <p><strong>EGFR:</strong> [hasil_EGFR]</p>
-                                        <p><strong>CIC:</strong> [hasil_CIC]</p>
-                                        <p><strong>MUC16:</strong> [hasil_MUC16]</p>
-                                        <p><strong>PIK3CA:</strong> [hasil_PIK3CA]</p>
-                                        <p><strong>NF1:</strong> [hasil_NF1]</p>
-                                        <p><strong>PIK3R1:</strong> [hasil_PIK3R1]</p>
+                                        <p><strong>IDH1:</strong> {{ data['IDH1'] }}</p>
+                                        <p><strong>TP53:</strong> {{ data['TP53'] }}</p>
+                                        <p><strong>ATRX:</strong> {{ data['ATRX'] }}</p>
+                                        <p><strong>PTEN:</strong> {{ data['PTEN'] }}</p>
+                                        <p><strong>EGFR:</strong> {{ data['EGFR'] }}</p>
+                                        <p><strong>CIC:</strong> {{ data['CIC'] }}</p>
+                                        <p><strong>MUC16:</strong> {{ data['MUC16'] }}</p>
+                                        <p><strong>PIK3CA:</strong> {{ data['PIK3CA'] }}</p>
+                                        <p><strong>NF1:</strong> {{ data['NF1'] }}</p>
+                                        <p><strong>PIK3R1:</strong> {{ data['PIK3R1'] }}</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><strong>FUBP1:</strong> [hasil_FUBP1]</p>
-                                        <p><strong>RB1:</strong> [hasil_RB1]</p>
-                                        <p><strong>NOTCH1:</strong> [hasil_NOTCH1]</p>
-                                        <p><strong>BCOR:</strong> [hasil_BCOR]</p>
-                                        <p><strong>CSMD3:</strong> [hasil_CSMD3]</p>
-                                        <p><strong>SMARCA4:</strong> [hasil_SMARCA4]</p>
-                                        <p><strong>GRIN2A:</strong> [hasil_GRIN2A]</p>
-                                        <p><strong>IDH2:</strong> [hasil_IDH2]</p>
-                                        <p><strong>FAT4:</strong> [hasil_FAT4]</p>
-                                        <p><strong>PDGFRA:</strong> [hasil_PDGFRA]</p>
+                                        <p><strong>FUBP1:</strong> {{ data['FUBP1'] }}</p>
+                                        <p><strong>RB1:</strong> {{ data['RB1'] }}</p>
+                                        <p><strong>NOTCH1:</strong> {{ data['NOTCH1'] }}</p>
+                                        <p><strong>BCOR:</strong> {{ data['BCOR'] }}</p>
+                                        <p><strong>CSMD3:</strong> {{ data['CSMD3'] }}</p>
+                                        <p><strong>SMARCA4:</strong> {{ data['SMARCA4'] }}</p>
+                                        <p><strong>GRIN2A:</strong> {{ data['GRIN2A'] }}</p>
+                                        <p><strong>IDH2:</strong> {{ data['IDH2'] }}</p>
+                                        <p><strong>FAT4:</strong> {{ data['FAT4'] }}</p>
+                                        <p><strong>PDGFRA:</strong> {{ data['PDGFRA'] }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -126,10 +119,10 @@
                             <div class="col-md-6">
                                 <h4>Hasil Grading</h4>
                                 <ul>
-                                    [hasil_grading]
+                                    {{ prediction }}
                                 </ul>
                             </div>
-                            <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="index.html">Back</a>
+                            <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="{{ url_for('form_diagnosa') }}">Back</a>
                         </div>
                     </div>
                 </div>
@@ -137,7 +130,6 @@
         </div>
     </div>
     <!-- Contact End -->
-
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -165,17 +157,17 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 
 </html>

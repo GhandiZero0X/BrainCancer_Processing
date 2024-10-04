@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Klinik - Clinic Website Template</title>
+    <title>Grading Glioma BrainCancer</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{ url_for('static', filename='img/logo.png') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,16 +35,16 @@
 
 <body>
     <!-- Spinner Start -->
-    <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div> -->
+    </div>
     <!-- Spinner End -->
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="{{ url_for('index') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Klinik Logo" class="img-fluid logo-small">
         </a>               
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,11 +52,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="{{ url_for('index') }}" class="nav-item nav-link active">Home</a>
                 <a href="#about" class="nav-item nav-link">About</a>
                 <a href="#Genes" class="nav-item nav-link">Genes</a>
             </div>
-            <a href="{{ url_for('contact') }}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">DIAGNOSA</a>
+            <a href="{{ url_for('form_diagnosa') }}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">DIAGNOSA</a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -119,7 +119,7 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="d-flex flex-column">
                         <img class="img-fluid rounded w-75 align-self-end" src="{{ url_for('static', filename='img/4.jpg') }}" alt="">
-                        <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="img/5.jpg" alt="" style="margin-top: -25%;">
+                        <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="{{ url_for('static', filename='img/5.jpg') }}" alt="" style="margin-top: -25%;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
@@ -129,7 +129,7 @@
                     <p class="mb-4">Kanker otak dan tumor otak adalah dua kondisi yang berbeda, walaupun keduanya mirip dan berkaitan, disini akan kita bahas (inti) perbedaan keduanya beserta gejala, penyebab, diagnosis dan pengobatannya.</p>
                     <p class="mb-4">Tumor otak adalah suatu massa jaringan yang terbentuk akibat dari pertumbuhan sel-sel otak yang abnormal (tidak terkontrol). Tumor adalah istilah umum untuk jaringan yang membentuk massa abnormal.</p>
                     <p class="mb-4">Sedangkan kanker otak adalah pertumbuhan sel-sel di otak yang abnormal atau tidak terkontrol yang bersifat ganas artinya dapat menyebar dan menyerang organ tubuh lainnya.</p>
-                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="">Formulir Diagnosa</a>
+                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="{{ url_for('form_diagnosa') }}">Formulir Diagnosa</a>
                 </div>
         </div>
     </div>
