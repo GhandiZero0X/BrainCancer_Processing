@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Klinik - Clinic Website Template</title>
+    <title>Grading Glioma BrainCancer</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{ url_for('static', filename='img/logo.png') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,15 +22,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -43,19 +44,19 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <img src="img/logo.png" alt="Klinik Logo" class="img-fluid logo-small">
+        <a href="{{ url_for('index') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Klinik Logo" class="img-fluid logo-small">
         </a>               
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="index.html" class="nav-item nav-link">About</a>
-                <a href="index.html" class="nav-item nav-link">Genes</a>
+                <a href="{{ url_for('index') }}" class="nav-item nav-link active">Home</a>
+                <a href="{{ url_for('index') }}" class="nav-item nav-link">About</a>
+                <a href="{{ url_for('index') }}" class="nav-item nav-link">Genes</a>
             </div>
-            <a href="contact.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">DIAGNOSA</a>
+            <a href="{{ url_for('form_diagnosa') }}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">DIAGNOSA</a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -64,16 +65,9 @@
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <h1 class="display-3 text-white mb-3 animated slideInDown">Formulir Diagnosa</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb text-uppercase mb-0">
-                    <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="contact.html">Diagnosa</a></li>
-                </ol>
-            </nav>
         </div>
     </div>
     <!-- Page Header End -->
-
 
     <!-- Contact Start -->
     <div class="container-xxl py-5">
@@ -84,240 +78,240 @@
                         <p class="d-inline-block border rounded-pill py-1 px-4">Formulir Diagnosa</p>
                         <h1 class="mb-4">Come on, try to diagnose your condition!</h1>
                         <p class="mb-4">Enter according to the form.</p>
-                        <form>
+                        <form action="/hasil" method="POST">
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="Gender">
                                             <option value="" disabled selected>Choose Your Gender</option>
-                                            <option value="Option 1">Female</option>
-                                            <option value="Option 2">Male</option>
+                                            <option value="1">Female</option>
+                                            <option value="0">Male</option>
                                         </select>
                                         <label for="options">Gender</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                        <label for="email">Your Age</label>
+                                        <input type="age" class="form-control" id="age" placeholder="Your age" name="Age">
+                                        <label for="age">Your Age</label>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="Race">
                                             <option value="" disabled selected>Choose Your Race</option>
-                                            <option value="Option 1">White</option>
-                                            <option value="Option 2">Black or African American</option>
-                                            <option value="Option 2">Asian</option>
-                                            <option value="Option 2">American Indian or Alaska Native</option>
+                                            <option value="0.0">White</option>
+                                            <option value="0.333333">Black or African American</option>
+                                            <option value="0.666667">Asian</option>
+                                            <option value="1.0">American Indian or Alaska Native</option>
                                         </select>
                                         <label for="options">Race</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="IDH1">
                                             <option value="" disabled selected>Choose Your IDH1</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">IDH1</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="TP53">
                                             <option value="" disabled selected>Choose Your TP53</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">TP53</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="ATRX">
                                             <option value="" disabled selected>Choose Your ATRX</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">ATRX</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="PTEN">
                                             <option value="" disabled selected>Choose Your PTEN</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">PTEN</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
-                                    <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                    <div class="form-floating"> 
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="EGFR">
                                             <option value="" disabled selected>Choose Your EGFR</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">EGFR</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="CIC">
                                             <option value="" disabled selected>Choose Your CIC</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">CIC</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="MUC16">
                                             <option value="" disabled selected>Choose Your MUC16</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">MUC16</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="PIK3CA">
                                             <option value="" disabled selected>Choose Your PIK3CA</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">PIK3CA</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="NF1">
                                             <option value="" disabled selected>Choose Your NF1</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">NF1</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="PIK3R1">
                                             <option value="" disabled selected>Choose Your PIK3R1</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">PIK3R1</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="FUBP1">
                                             <option value="" disabled selected>Choose Your FUBP1</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">FUBP1</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="RB1">
                                             <option value="" disabled selected>Choose Your RB1</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">RB1</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="NOTCH1">
                                             <option value="" disabled selected>Choose Your NOTCH1</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">NOTCH1</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="BCOR">
                                             <option value="" disabled selected>Choose Your BCOR</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">BCOR</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="CSMD3">
                                             <option value="" disabled selected>Choose Your CSMD3</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">CSMD3</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="SMARCA4">
                                             <option value="" disabled selected>Choose Your SMARCA4</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">SMARCA4</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="GRIN2A">
                                             <option value="" disabled selected>Choose Your GRIN2A</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">GRIN2A</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="IDH2">
                                             <option value="" disabled selected>Choose Your IDH2</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1" name="IDH2">Mutated</option>
+                                            <option value="0" name="IDH2">Not Mutated</option>
                                         </select>
                                         <label for="options">IDH2</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="FAT4">
                                             <option value="" disabled selected>Choose Your FAT4</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1" name="FAT4">Mutated</option>
+                                            <option value="0" name="FAT4">Not Mutated</option>
                                         </select>
                                         <label for="options">FAT4</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-floating">
-                                        <select class="form-control" id="options" aria-label="Floating label select example">
+                                        <select class="form-control" id="options" aria-label="Floating label select example" name="PDGFRA">
                                             <option value="" disabled selected>Choose Your PDGFRA</option>
-                                            <option value="Option 1">Mutated</option>
-                                            <option value="Option 2">Not Mutated</option>
+                                            <option value="1">Mutated</option>
+                                            <option value="0">Not Mutated</option>
                                         </select>
                                         <label for="options">PDGFRA</label>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="button" onclick="window.location.href='about.html';">Send Diagnosa</button>
-                                </div>                                
+                                </div>                               
                             </div>
+                            <div class="col-12 pt-3">
+                                <button class="btn btn-primary w-100 py-3" type="submit" onclick="">Send Diagnosa</button>
+                            </div> 
                         </form>
                     </div>
                 </div>
@@ -353,17 +347,17 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 
 </html>
