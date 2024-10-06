@@ -23,4 +23,4 @@ for c in list(data_normalisasi):
     print(f"\nValue counts pada kolom '{c}':\n", data_normalisasi[c].value_counts())
 
 data_normalisasi.to_csv('TCGA_InfoWithGrade_Normalisasi.csv', index=False)
-
+print("\nDataset yang telah dinormalisasi telah disimpan sebagai 'TCGA_InfoWithGrade_Normalisasi.csv'")

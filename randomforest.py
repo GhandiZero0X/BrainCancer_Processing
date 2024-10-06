@@ -11,7 +11,7 @@ file_path = 'TCGA_InfoWithGrade_Normalisasi.csv'
 data_randomforest = pd.read_csv(file_path)
 
 # Initialize the MinMaxScaler
-scaler = MinMaxScaler()
+# scaler = MinMaxScaler()
 
 # Define features (X) and target (y)
 X = data_randomforest.drop('Grade', axis=1)

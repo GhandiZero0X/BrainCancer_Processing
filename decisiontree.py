@@ -18,11 +18,11 @@ y = data_decisiontree['Grade']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
 # Initialize the MinMaxScaler
-scaler = MinMaxScaler()
+# scaler = MinMaxScaler()
 
-# Normalize the 'Age_at_diagnosis' feature
-X_train['Age_at_diagnosis'] = scaler.fit_transform(X_train[['Age_at_diagnosis']])
-X_test['Age_at_diagnosis'] = scaler.transform(X_test[['Age_at_diagnosis']])
+# # Normalize the 'Age_at_diagnosis' feature
+# X_train['Age_at_diagnosis'] = scaler.fit_transform(X_train[['Age_at_diagnosis']])
+# X_test['Age_at_diagnosis'] = scaler.transform(X_test[['Age_at_diagnosis']])
 
 # Initialize the Decision Tree Classifier
 clf = DecisionTreeClassifier(random_state=0)
