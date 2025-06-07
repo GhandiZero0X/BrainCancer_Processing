@@ -23,6 +23,7 @@ X = data_naiveBayes.drop(columns=[target_column])
 print("\nFeatures:")
 print(X.head())
 y = data_naiveBayes[target_column]
+print("\nTarget:", y.head())
 
 # pisahkan dataset menjadi 20% data test dan 80% data training
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
